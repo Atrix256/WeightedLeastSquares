@@ -30,11 +30,10 @@ int main(int argc, char** argv)
 		{2.0f, 2.0f, 1.0f},
 	};
 
-	std::array<float, 2> test;
-	auto a = test.size();
+	static const int c_numPoints = _countof(dataPoints);
+	printf("Fitting %i data points with a degree %i curve.\n\n", c_numPoints, DEGREE());
 
 	// Create the W weight matrix, that has weight_i at W_ii
-	static const int c_numPoints = _countof(dataPoints);
 	MtxSq<c_numPoints> W{};
 	for (int i = 0; i < c_numPoints; ++i)
 		W[i][i] = dataPoints[i].weight;
